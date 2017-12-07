@@ -12,6 +12,6 @@ ReactDOM.render(<div>
 	{
 		names.map(function (item,index) {
 			return item.length>0?<span style={style} className="red" key={index}>{item}</span>:null;//null合法的react元素，表示什么都不显示
-		});
+		})
 	}
 </div>, document.querySelector('#root'));
