@@ -1,7 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-//React是由 React元素 React组件
-//1.首字母小写，凡是首字母小写的都会被认为是React元素
-//Unknown prop `cls` on <div> tag. Remove this prop from the element
-ReactDOM.render(<div cls="ee">hello
-</div>, document.querySelector('#root'));
+import React,{Component} from 'react';
+import {render} from 'react-dom';
+import PropTypes from 'prop-types';
+class Sum extends Component{
+    constructor(){
+        super();
+        this.state = {a:100,b:100}
+    }
+    handleChange = (event,attr)=>{
+        //当setstate的时候，如果新的状态对象不包含老状态的一些属性，那么老属性的值则保持不变
+        this.setState({
+            attr:parseInt(event.target.value)
+        });
+        // {...this.state,{...newState}}
+    }
+    render(){
+        // let a = 11;
+        return (
+            <div>
+                <input type="text" value={this.state.a} onChange={event=>this.handleChange(event,'a')}/>+
+                <input type="text" value={this.state.b} onChange={event=>this.handleChange(event,'b')}/>=
+                <input type="text" value={this.state.a+this.state.b}/>
+            </div>
+        )
+    }
+}
+render(<Sum/>,window.app);
